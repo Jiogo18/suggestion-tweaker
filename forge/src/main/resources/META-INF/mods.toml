@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[38,)"
+loaderVersion="[36,)"
 license="MIT License"
 
 [[mods]]
@@ -17,20 +17,20 @@ issueTrackerURL = "https://github.com/VelizarBG/suggestion-tweaker/issues"
 [[dependencies.suggestion_tweaker]]
 modId = "forge"
 mandatory = true
-versionRange = "[38,)"
+versionRange = "[36,)"
 ordering = "NONE"
 side = "BOTH" # BOTH, CLIENT or SERVER
 
 [[dependencies.suggestion_tweaker]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.18,)"
+versionRange = "[1.16,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.suggestion_tweaker]]
-modId = "cloth_config"
+modId = "cloth-config"
 mandatory = true
-versionRange = "[6.2.57,)"
+versionRange = "[4.14.54,)"
 ordering = "NONE"
 side = "BOTH"

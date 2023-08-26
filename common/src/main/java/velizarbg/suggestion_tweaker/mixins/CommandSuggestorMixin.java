@@ -18,7 +18,7 @@ import static velizarbg.suggestion_tweaker.ModConfig.FilteringMode.*;
 
 @Mixin(CommandSuggestor.class)
 public class CommandSuggestorMixin {
-	@Shadow private static int getStartOfCurrentWord(String input) {
+	@Shadow private static int getLastPlayerNameStart(String input) {
 		throw new AssertionError();
 	}
 	@Shadow @Final TextFieldWidget textField;
@@ -28,12 +28,12 @@ public class CommandSuggestorMixin {
 	 * @reason Too niche to not overwrite
 	 */
 	@Overwrite
-	private List<Suggestion> sortSuggestions(Suggestions suggestions) {
+	private List<Suggestion> method_30104(Suggestions suggestions) {
 		String command = textField.getText().substring(0, textField.getCursor());
 		// To make sorting command literals work
 		if (command.startsWith("/"))
 			command = command.substring(1);
-		int startOfCurrentWord = getStartOfCurrentWord(command);
+		int startOfCurrentWord = getLastPlayerNameStart(command);
 		String remaining = command.substring(startOfCurrentWord);
 		// To make sorting tags work
 		if (remaining.startsWith("#"))

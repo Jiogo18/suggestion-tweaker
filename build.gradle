@@ -41,7 +41,8 @@ allprojects {
 		// If Javadoc is generated, this must be specified in that task too.
 		options.encoding = "UTF-8"
 
-		// Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
+		// Minecraft 1.16.5 upwards uses Java 1.8.
+		// We keep Java 17 because of backwards compatibility.
 		options.release = 17
 	}
 

@@ -1,7 +1,7 @@
 package velizarbg.suggestion_tweaker.forge;
 
 import me.shedaniel.autoconfig.AutoConfig;
-import net.minecraftforge.client.ConfigGuiHandler;
+import net.minecraftforge.fml.ExtensionPoint;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import velizarbg.suggestion_tweaker.Constants;
@@ -15,7 +15,7 @@ public class SuggestionTweaker {
 		Constants.config = ModConfig.init();
 
 		// register config screen
-		ModLoadingContext.get().registerExtensionPoint(ConfigGuiHandler.ConfigGuiFactory.class, () -> new ConfigGuiHandler.ConfigGuiFactory((client, parent) ->
+		ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.CONFIGGUIFACTORY, () -> ((client, parent) ->
 		AutoConfig.getConfigScreen(ModConfig.class, parent).get()
 		));
 	}

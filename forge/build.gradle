@@ -91,7 +91,7 @@ unifiedPublishing {
 	project {
 		displayName.set "[Forge $project.supported_version] v$project.version"
 		releaseType.set "release"
-		gameVersions.set(["1.18", "1.18.1", "1.18.2"])
+		gameVersions.set(["1.16.5"])
 		gameLoaders.set(["forge"])
 
 		System.getenv("changelog")?.with { String changelogg ->

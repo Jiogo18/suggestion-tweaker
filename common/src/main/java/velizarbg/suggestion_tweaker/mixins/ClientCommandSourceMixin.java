@@ -49,8 +49,8 @@ public class ClientCommandSourceMixin {
 		List<Suggestion> suggestionList = new ArrayList<>();
 		for (Suggestion suggestion : suggestions.getList()) {
 			if (config.isCaseSensitive
-				? CommandSource.shouldSuggest(currentInput, suggestion.getText())
-				: CommandSource.shouldSuggest(currentInput.toLowerCase(Locale.ROOT), suggestion.getText().toLowerCase(Locale.ROOT))
+				? CommandSource.method_27136(currentInput, suggestion.getText())
+				: CommandSource.method_27136(currentInput.toLowerCase(Locale.ROOT), suggestion.getText().toLowerCase(Locale.ROOT))
 			) {
 				suggestionList.add(new Suggestion(
 					new StringRange(

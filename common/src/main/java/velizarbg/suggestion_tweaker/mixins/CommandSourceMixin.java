@@ -21,17 +21,18 @@ public interface CommandSourceMixin {
 		for (T candidate : candidates) {
 			Identifier identifier = getIdentifier.apply(candidate);
 
-			if (CommandSource.shouldSuggest(remaining, identifier.toString()))
+			if (CommandSource.method_27136(remaining, identifier.toString()))
 				action.accept(candidate);
 		}
 	}
 
 	/**
+	 * renamed shouldSuggest in 1.18
 	 * @author VelizarBG
 	 * @reason Too niche to not overwrite
 	 */
 	@Overwrite
-	static boolean shouldSuggest(String remaining, String candidate) {
+	static boolean method_27136(String remaining, String candidate) {
 		// if present, split namespace and path to allow searching inside a specific namespace
 		String[] remainingId = remaining.split(":", 2);
 		if (remainingId.length == 2)

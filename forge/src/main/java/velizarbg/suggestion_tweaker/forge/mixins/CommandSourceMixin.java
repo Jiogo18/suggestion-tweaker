@@ -14,7 +14,7 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 import static net.minecraft.command.CommandSource.forEachMatching;
-import static net.minecraft.command.CommandSource.shouldSuggest;
+import static net.minecraft.command.CommandSource.method_27136;
 import static velizarbg.suggestion_tweaker.Constants.config;
 
 /**
@@ -23,6 +23,10 @@ import static velizarbg.suggestion_tweaker.Constants.config;
  */
 @Mixin(CommandSource.class)
 public interface CommandSourceMixin {
+	/**
+	 * @author suggestion-tweaker
+	 * @reason suggestion-tweaker
+	 */
 	@Overwrite
 	static CompletableFuture<Suggestions> suggestIdentifiers(Iterable<Identifier> candidates, SuggestionsBuilder builder, String prefix) {
 		String string = config.isCaseSensitive
@@ -33,6 +37,10 @@ public interface CommandSourceMixin {
 		return builder.buildFuture();
 	}
 
+	/**
+	 * @author suggestion-tweaker
+	 * @reason suggestion-tweaker
+	 */
 	@Overwrite
 	static CompletableFuture<Suggestions> suggestIdentifiers(Iterable<Identifier> candidates, SuggestionsBuilder builder) {
 		String string = config.isCaseSensitive
@@ -43,6 +51,10 @@ public interface CommandSourceMixin {
 		return builder.buildFuture();
 	}
 
+	/**
+	 * @author suggestion-tweaker
+	 * @reason suggestion-tweaker
+	 */
 	@Overwrite
 	static <T> CompletableFuture<Suggestions> suggestFromIdentifier(
 		Iterable<T> candidates, SuggestionsBuilder builder, Function<T, Identifier> identifier, Function<T, Message> tooltip
@@ -55,6 +67,10 @@ public interface CommandSourceMixin {
 		return builder.buildFuture();
 	}
 
+	/**
+	 * @author suggestion-tweaker
+	 * @reason suggestion-tweaker
+	 */
 	@Overwrite
 	static CompletableFuture<Suggestions> suggestMatching(Iterable<String> candidates, SuggestionsBuilder builder) {
 		boolean isCaseSensitive = config.isCaseSensitive;
@@ -63,7 +79,7 @@ public interface CommandSourceMixin {
 			: builder.getRemaining().toLowerCase(Locale.ROOT);
 
 		for(String string2 : candidates) {
-			if (shouldSuggest(string, isCaseSensitive ? string2 : string2.toLowerCase(Locale.ROOT))) {
+			if (method_27136(string, isCaseSensitive ? string2 : string2.toLowerCase(Locale.ROOT))) {
 				builder.suggest(string2);
 			}
 		}
@@ -71,6 +87,10 @@ public interface CommandSourceMixin {
 		return builder.buildFuture();
 	}
 
+	/**
+	 * @author suggestion-tweaker
+	 * @reason suggestion-tweaker
+	 */
 	@Overwrite
 	static CompletableFuture<Suggestions> suggestMatching(Stream<String> candidates, SuggestionsBuilder builder) {
 		boolean isCaseSensitive = config.isCaseSensitive;
@@ -78,10 +98,14 @@ public interface CommandSourceMixin {
 			? builder.getRemaining()
 			: builder.getRemaining().toLowerCase(Locale.ROOT);
 
-		candidates.filter(candidate -> shouldSuggest(string, isCaseSensitive ? candidate : candidate.toLowerCase(Locale.ROOT))).forEach(builder::suggest);
+		candidates.filter(candidate -> method_27136(string, isCaseSensitive ? candidate : candidate.toLowerCase(Locale.ROOT))).forEach(builder::suggest);
 		return builder.buildFuture();
 	}
 
+	/**
+	 * @author suggestion-tweaker
+	 * @reason suggestion-tweaker
+	 */
 	@Overwrite
 	static CompletableFuture<Suggestions> suggestMatching(String[] candidates, SuggestionsBuilder builder) {
 		boolean isCaseSensitive = config.isCaseSensitive;
@@ -90,7 +114,7 @@ public interface CommandSourceMixin {
 			: builder.getRemaining().toLowerCase(Locale.ROOT);
 
 		for(String string2 : candidates) {
-			if (shouldSuggest(string, isCaseSensitive ? string2 : string2.toLowerCase(Locale.ROOT))) {
+			if (method_27136(string, isCaseSensitive ? string2 : string2.toLowerCase(Locale.ROOT))) {
 				builder.suggest(string2);
 			}
 		}
@@ -98,22 +122,27 @@ public interface CommandSourceMixin {
 		return builder.buildFuture();
 	}
 
-	@Overwrite
-	static <T> CompletableFuture<Suggestions> suggestMatching(
-		Iterable<T> candidates, SuggestionsBuilder builder, Function<T, String> suggestionText, Function<T, Message> tooltip
-	) {
-		boolean isCaseSensitive = config.isCaseSensitive;
-		String string = isCaseSensitive
-			? builder.getRemaining()
-			: builder.getRemaining().toLowerCase(Locale.ROOT);
+	/**
+	 * Not available in 1.16.5, code from 1.18
+	 * @author suggestion-tweaker
+	 * @reason suggestion-tweaker
+	 */
+	// @Overwrite
+	// static <T> CompletableFuture<Suggestions> suggestMatching(
+	// 	Iterable<T> candidates, SuggestionsBuilder builder, Function<T, String> suggestionText, Function<T, Message> tooltip
+	// ) {
+	// 	boolean isCaseSensitive = config.isCaseSensitive;
+	// 	String string = isCaseSensitive
+	// 		? builder.getRemaining()
+	// 		: builder.getRemaining().toLowerCase(Locale.ROOT);
 
-		for(T object : candidates) {
-			String string2 = suggestionText.apply(object);
-			if (shouldSuggest(string, isCaseSensitive ? string2 : string2.toLowerCase(Locale.ROOT))) {
-				builder.suggest(string2, tooltip.apply(object));
-			}
-		}
+	// 	for(T object : candidates) {
+	// 		String string2 = suggestionText.apply(object);
+	// 		if (method_27136(string, isCaseSensitive ? string2 : string2.toLowerCase(Locale.ROOT))) {
+	// 			builder.suggest(string2, tooltip.apply(object));
+	// 		}
+	// 	}
 
-		return builder.buildFuture();
-	}
+	// 	return builder.buildFuture();
+	// }
 }

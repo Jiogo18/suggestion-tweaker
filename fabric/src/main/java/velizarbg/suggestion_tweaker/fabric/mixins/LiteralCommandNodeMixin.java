@@ -22,7 +22,7 @@ public class LiteralCommandNodeMixin {
 	@Redirect(method = "listSuggestions", at = @At(value = "INVOKE", target = "Ljava/lang/String;startsWith(Ljava/lang/String;)Z"), remap = false)
 	private boolean doShouldSuggestCheck(String literalLowerCase, String remainingLowerCase, CommandContext<?> context, SuggestionsBuilder builder) {
 		return config.isCaseSensitive
-			? CommandSource.shouldSuggest(builder.getRemaining(), literal)
-			: CommandSource.shouldSuggest(remainingLowerCase, literalLowerCase);
+			? CommandSource.method_27136(builder.getRemaining(), literal)
+			: CommandSource.method_27136(remainingLowerCase, literalLowerCase);
 	}
 }

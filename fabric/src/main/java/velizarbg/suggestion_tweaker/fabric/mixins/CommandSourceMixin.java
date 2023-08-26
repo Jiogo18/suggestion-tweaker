@@ -23,7 +23,7 @@ public interface CommandSourceMixin {
 			"suggestMatching(Ljava/lang/Iterable;Lcom/mojang/brigadier/suggestion/SuggestionsBuilder;Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/concurrent/CompletableFuture;"
 		},
 		at = @At(value = "INVOKE", target = "Ljava/lang/String;toLowerCase(Ljava/util/Locale;)Ljava/lang/String;"))
-	private static String handleCaseSensitivity(String string, Locale locale) {
+	static String handleCaseSensitivity(String string, Locale locale) {
 		return config.isCaseSensitive ? string : string.toLowerCase(locale);
 	}
 }

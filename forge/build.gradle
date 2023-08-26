@@ -104,7 +104,7 @@ unifiedPublishing {
 			curseforge {
 				token.set key
 				id.set project.curseforge_id
-				gameVersions.addAll "Java 17"
+				gameVersions.addAll "Java 8"
 			}
 		}
 

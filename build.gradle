@@ -42,8 +42,7 @@ allprojects {
 		options.encoding = "UTF-8"
 
 		// Minecraft 1.16.5 upwards uses Java 1.8.
-		// We keep Java 17 because of backwards compatibility.
-		options.release = 17
+		options.release = 8
 	}
 
 	java {

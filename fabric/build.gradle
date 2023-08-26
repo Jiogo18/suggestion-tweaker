@@ -89,7 +89,7 @@ unifiedPublishing {
 	project {
 		displayName.set "[Fabric $project.supported_version] v$project.version"
 		releaseType.set "release"
-		gameVersions.set(["1.16.5"])
+		gameVersions.set(["1.16", "1.16.1", "1.16.2", "1.16.3", "1.16.4", "1.16.5"])
 		gameLoaders.set(["fabric"])
 
 		System.getenv("changelog")?.with { String changelogg ->
@@ -102,7 +102,7 @@ unifiedPublishing {
 			curseforge {
 				token.set key
 				id.set project.curseforge_id
-				gameVersions.addAll "Java 17"
+				gameVersions.addAll "Java 8"
 			}
 		}
 

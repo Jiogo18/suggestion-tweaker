@@ -20,12 +20,12 @@ public class ModConfig implements ConfigData {
 	public boolean isCaseSensitive = false;
 
 	@ConfigEntry.Gui.EnumHandler(option = ConfigEntry.Gui.EnumHandler.EnumDisplayOption.BUTTON)
-	@Comment("""
-		What is the requirement for a suggestion to be shown?
-		STRICT: It should start with the input
-		SLIGHTLY_LOOSE: It should contain the input anywhere inside of it
-		LOOSE: It should contain all of the input words that are separated by _ (an underscore), in any order
-		VERY_LOOSE: It should contain all of the input's letters, in any order""")
+	@Comment(""
+			+ "What is the requirement for a suggestion to be shown?\n"
+			+ "STRICT: It should start with the input\n"
+			+ "SLIGHTLY_LOOSE: It should contain the input anywhere inside of it\n"
+			+ "LOOSE: It should contain all of the input words that are separated by _ (an underscore), in any order\n"
+			+ "VERY_LOOSE: It should contain all of the input's letters, in any order")
 	public FilteringMode filteringMode = FilteringMode.LOOSE;
 
 	public enum FilteringMode {
